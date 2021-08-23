@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
     belongs_to :customer
-    has_many :drink_orders
-    has_many :drinks, through: :drink_orders 
+    has_and_belongs_to_many :drinks 
+
 
     def total_price
         total_price = self.drinks.sum(:price)

@@ -1,5 +1,3 @@
-class Drink < ActiveRecord::Base 
-    has_many :drink_orders
-    has_many :orders, through: :drink_orders 
-    has_many :customers, through: :orders
+class Drink < ActiveRecord::Base
+    has_and_belongs_to_many :orders 
 end
