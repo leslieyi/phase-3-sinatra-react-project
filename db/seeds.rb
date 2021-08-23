@@ -21,5 +21,4 @@ Drink.create(name: "Caramel Frappuccino", price: 5.95, size: "Venti", category: 
 
 Customer.create(name: "Bob", email: "bob@123.com", password: "123")
 
-
 puts "✅ Done seeding!"
