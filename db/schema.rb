@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_154636) do
+ActiveRecord::Schema.define(version: 2021_08_23_164900) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -18,20 +18,23 @@ ActiveRecord::Schema.define(version: 2021_08_23_154636) do
     t.string "password"
   end
 
+  create_table "drink_orders", force: :cascade do |t|
+    t.integer "drink_id"
+    t.integer "order_id"
+  end
+
   create_table "drinks", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
+    t.float "price"
     t.string "size"
     t.string "category"
   end
 
   create_table "orders", force: :cascade do |t|
     t.string "name"
-    t.string "size"
-    t.integer "total_price"
+    t.float "total_price"
     t.boolean "fulfilled"
     t.integer "customer_id"
-    t.integer "drink_id"
   end
 
 end
