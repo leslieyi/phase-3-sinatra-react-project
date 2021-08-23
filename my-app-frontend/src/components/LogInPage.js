@@ -2,7 +2,7 @@
 function LogInPage(){
 
     return (
-<h1>Hi from Login</h1>
+        <h1>Hi from Login</h1>
     )
 }
 
