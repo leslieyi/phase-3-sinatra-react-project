@@ -37,5 +37,31 @@ class ApplicationController < Sinatra::Base
     categories.to_json
   end
 
+  get "/customers" do
+    customers = Customer.all 
+    customers.to_json
+  end
+
+  get "/orders" do
+    orders = Order.all 
+    orders.to_json(include: :drinks)
+  end
+
+  # get 'drinks_orders' do
+
+  # end
+
+
+  post "/drinks_orders" do
+   Order.create(customer_id: "#{drinks_orders_params["customer_id"]}", drink_id: "#{drinks_orders_params["drink_id"]}" ) 
+   Order.find_by(customer_id: "#{drinks_orders_params["customer_id"]}").to_json
+  end
+  
+  private 
+  
+  def drinks_orders_params
+    allowed_params = %w( customer_id drink_id)
+    params.select {|param,value| allowed_params.include?(param)}
+  end
 
 end

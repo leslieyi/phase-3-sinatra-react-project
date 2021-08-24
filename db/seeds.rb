@@ -16,7 +16,7 @@ Drink.create(name:"Jasmine Bubble Tea", price: 5.75, category_id:2, url:"https:/
 Category.create(name:"Hot Drinks")
 Category.create(name:"Cold Drinks")
 
-Customer.create(name: "Bob", email: "bob@123.com", password: "123")
+Customer.create(name: "Bob", email: "bob@123.com", password: "123", avatar: "https://i.pinimg.com/originals/0b/a3/77/0ba377cf0a8d0eb5f4fee0c52ff575ab.jpg")
 Customer.create(name: "Shostakovich", email:"shosty_the_snowman.com", password: "123")
 
 Order.create(customer_id:1, drink_ids:[1, 2, 3])
