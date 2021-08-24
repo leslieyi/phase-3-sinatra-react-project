@@ -17,8 +17,8 @@ class CustomerController < ApplicationController
         if Customer.find_by(email: "#{register_params["email"]}")
             {error: "Email is already in use. Please login or use a different email"}.to_json
         else
-            {success: "Successfully created account"}
             Customer.create(register_params)
+            {success: "Successfully created account"}.to_json
         end
     end
 

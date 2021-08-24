@@ -10,31 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_164900) do
+ActiveRecord::Schema.define(version: 2021_08_24_220926) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password"
-  end
-
-  create_table "drink_orders", force: :cascade do |t|
-    t.integer "drink_id"
-    t.integer "order_id"
+    t.string "avatar"
   end
 
   create_table "drinks", force: :cascade do |t|
     t.string "name"
     t.float "price"
-    t.string "size"
-    t.string "category"
+    t.integer "category_id"
+    t.string "url"
+    t.string "calories"
+    t.string "ingredients"
+  end
+
+  create_table "drinks_orders", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "drink_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.float "total_price"
-    t.boolean "fulfilled"
     t.integer "customer_id"
+    t.float "total_price"
   end
 
 end

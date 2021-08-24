@@ -4,8 +4,9 @@ class Order < ActiveRecord::Base
 
 
     def total_price
-        total_price = self.drinks.sum(:price)
+        total_price = self.drinks.all.sum(:price)
         self.update(total_price: total_price)
+        total_price
     end
     
 end

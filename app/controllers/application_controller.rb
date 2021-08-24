@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+  set :default_content_type, 'application/json'
   register Sinatra::CrossOrigin
   enable :sessions
 
@@ -17,7 +18,6 @@ class ApplicationController < Sinatra::Base
   
 
   
-  # Add your routes here
   get "/" do
     { message: "Good luck with your project!" }.to_json
   end
@@ -25,6 +25,7 @@ class ApplicationController < Sinatra::Base
   get '/drinks' do 
     drinks = Drink.all
     drinks.to_json
+    #this will show the categories with the ID, and you can get the name of the Categories through the macros
   end
 
   get '/drinks/:id' do
@@ -41,5 +42,43 @@ class ApplicationController < Sinatra::Base
     hot_drinks = Drink.where(category: 'Hot Coffee')
     hot_drinks.to_json
   end
+
+  get "/categories" do
+    categories = Category.all 
+    categories.to_json
+  end
+
+  get "/customers" do
+    customers = Customer.all 
+    customers.to_json
+  end
+
+  get "/orders" do
+    orders = Order.all 
+    orders.to_json(include: :drinks)
+  end
+
+  # get 'drinks_orders' do
+
+  # end
+
+
+  post "/drinks_orders" do
+   Order.create(customer_id: "#{drinks_orders_params["customer_id"]}", drink_id: "#{drinks_orders_params["drink_id"]}" ) 
+   Order.find_by(customer_id: "#{drinks_orders_params["customer_id"]}").to_json
+  end
+  
+  private 
+  
+  def drinks_orders_params
+    allowed_params = %w( customer_id drink_id)
+    params.select {|param,value| allowed_params.include?(param)}
+  end
+ 
+
+
+
+  # lsof -i tcp:9292
+
 
 end
