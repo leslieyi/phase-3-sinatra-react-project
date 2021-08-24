@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2021_08_24_012442) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
+    t.float "total_price"
   end
 
 end

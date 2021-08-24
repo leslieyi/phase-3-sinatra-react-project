@@ -38,4 +38,10 @@ class ApplicationController < Sinatra::Base
   end
 
 
+
+
+
+  # lsof -i tcp:9292
+
+
 end
