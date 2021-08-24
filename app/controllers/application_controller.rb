@@ -37,6 +37,11 @@ class ApplicationController < Sinatra::Base
     categories.to_json
   end
 
+  get "/orders" do
+    orders = Order.all 
+    orders.to_json
+  end
+
 
 
 
