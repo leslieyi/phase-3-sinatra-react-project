@@ -63,5 +63,11 @@ class ApplicationController < Sinatra::Base
     allowed_params = %w( customer_id drink_id)
     params.select {|param,value| allowed_params.include?(param)}
   end
+ 
+
+
+
+  # lsof -i tcp:9292
+
 
 end
