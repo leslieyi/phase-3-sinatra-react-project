@@ -33,11 +33,21 @@ class CustomerController < ApplicationController
         end
     end
 
+    patch '/update-avatar/:id' do 
+        avatar = Customer.find(params[:id])
+        avatar.update(
+            avatar: params[:avatar]
+        )
+
+        avatar.to_json
+
+    end
+
 
 
     private
     def register_params
-        allowed_params = %w(name email password)
+        allowed_params = %w(name email password avatar)
         params.select {|param,value| allowed_params.include?(param)}
     end
 

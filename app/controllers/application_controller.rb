@@ -68,10 +68,9 @@ class ApplicationController < Sinatra::Base
   end
 
   delete "/orders/:id" do
+    # binding.pry
     order = Order.find_by(params[:id])
     order.delete
-    Order.all.to_json(include: :drinks)
-
   end
   
   private 
