@@ -43,7 +43,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/orders" do
-    orders = Order.all 
+    # retrieve logged in customer id
+    customer_id = session[:customer_id]
+    orders = Order.where(customer_id: customer_id).all
     orders.to_json(include: :drinks)
   end
 
