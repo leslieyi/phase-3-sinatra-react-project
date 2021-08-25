@@ -53,6 +53,10 @@ Drink.create(name: 'Hot Tea', price: 3.25, category_id: 1,
 Drink.create(name: 'Cappuccino', price: 3.55, category_id: 1,
              url: 'https://images.unsplash.com/photo-1571867424485-ca624c51c157?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGNhcHB1Y2Npbm98ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80', calories: '140 calories', ingredients: 'Milk, Brewed Espresso')
 
+
+Drink.create(name: 'Unicorn Frappuccino Unltimate', price: 355.99, category_id: 2,
+    url: 'https://www.incimages.com/uploaded_files/image/1920x1080/Unicorn_FrappuccinoNO_190171.jpg', calories: '1400 calories', ingredients: 'Sparkles, Unicord Poo, Unicorn Tears, Sunshine, Dash of Rainbow')
+
 Category.create(name: 'Hot Drinks')
 Category.create(name: 'Cold Drinks')
 
