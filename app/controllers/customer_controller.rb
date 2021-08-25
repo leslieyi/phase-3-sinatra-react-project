@@ -17,6 +17,10 @@ class CustomerController < ApplicationController
             {error: "Wrong credentials or email is not in use. Please try again."}.to_json
         end
     end
+
+    delete '/login' do
+        session.delete(:customer_id)
+    end
   
     post '/register' do
         # register_params
