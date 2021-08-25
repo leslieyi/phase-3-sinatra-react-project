@@ -24,6 +24,9 @@ Drink.create(name: 'Caramel Frappuccino', price: 5.45, category_id: 2,
 Drink.create(name: 'Green Bubble Tea', price: 5.75, category_id: 2,
              url: 'https://data.thefeedfeed.com/static/2019/06/05/15597629795cf81823d037c.jpg', calories: '380 calories', ingredients: 'Tapioca Pearls, Match Powder, Sugar, Water, Almond Milk')
 
+Drink.create(name: 'Thai Bubble Tea', price: 5.75, category_id: 2,
+                url: 'https://t3.ftcdn.net/jpg/02/99/93/56/360_F_299935695_cYYYsSV065NSELXpgSWdY8oVZWg0LUSo.jpg', calories: '410 calories', ingredients: 'Tapioca Pearls, Thai Tea Powder, Sugar, Water, Milk')
+
 Drink.create(name: 'Jasmine Bubble Tea', price: 5.75, category_id: 2,
              url: 'https://www.alyssaandcarla.com//wp-content/uploads/2015/05/diy-jasmine-milk-tea-honey-boba-9.jpg', calories: '380 calories', ingredients: 'Tapioca Pearls, Jasmine Match Powder, Sugar, Water, Almond Milk')
 
