@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
     belongs_to :customer
+    belongs_to :cart
     has_and_belongs_to_many :drinks 
 
 

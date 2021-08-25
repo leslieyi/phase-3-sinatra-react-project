@@ -20,7 +20,7 @@ class CustomerController < ApplicationController
 
     delete '/login' do
         session.delete(:customer_id)
-    end
+    end 
   
     post '/register' do
         # register_params

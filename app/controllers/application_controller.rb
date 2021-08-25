@@ -49,15 +49,29 @@ class ApplicationController < Sinatra::Base
     orders.to_json(include: :drinks)
   end
 
-  # get 'drinks_orders' do
+  post '/create_order' do
+    puts drinks_orders_params["drink_id"]
+    order = Order.create(customer_id: drinks_orders_params["customer_id"])
+    # drinks_orders_params["drink_id"].map do |drink_id|
+    #   DrinksOrders.create(drink_id: drink_id, order_id: order.id)
+    # end
+    drinks_orders = DrinksOrders.create(drink_id: drinks_orders_params["drink_id"], order_id: order.id)
+    # order.drinks.create(drink_ids: drinks_orders_params["drink_id"])
+    order.to_json
 
-  # end
-
+  end
 
   post "/drinks_orders" do 
     order = Order.find_or_create_by(customer_id: drinks_orders_params["customer_id"])
-    order.drinks.create(drink_id: drinks_orders_params["drink_id"])
+    order.drinks.create(drink_ids: drinks_orders_params["drink_id"])
     order.to_json
+  end
+
+  delete "/orders/:id" do
+    order = Order.find_by(params[:id])
+    order.delete
+    Order.all.to_json(include: :drinks)
+
   end
   
   private 
@@ -66,9 +80,11 @@ class ApplicationController < Sinatra::Base
     allowed_params = %w( customer_id drink_id)
     params.select {|param,value| allowed_params.include?(param)}
   end
- 
 
-
+  def create_order_params
+    allowed_params = %w( customer_id drink_ids)
+    params.select {|param,value| allowed_params.include?(param)}
+  end
 
   # lsof -i tcp:9292
 

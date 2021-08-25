@@ -22,4 +22,5 @@ Customer.create(name: "Shostakovich", email:"shosty_the_snowman.com", password: 
 Order.create(customer_id:1, drink_ids:[1, 2, 3])
 
 
+
 puts "✅ Done seeding!"
