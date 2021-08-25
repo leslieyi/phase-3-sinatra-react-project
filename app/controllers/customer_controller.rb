@@ -1,10 +1,17 @@
 class CustomerController < ApplicationController
-  
+    get '/me' do 
+        customer_id = session[:customer_id]
+        data = {user: customer_id ? Customer.find(customer_id) : nil}
+        puts data
+        data.to_json
+    end
+
     post '/login' do
         customer = Customer.find_by(email: "#{login_params["email"]}")
         puts customer
         if customer && customer.password == login_params["password"]
-            session[:customer] = customer.id
+            puts "Saving to session"
+            session[:customer_id] = customer.id
             customer.to_json
         else
             {error: "Wrong credentials or email is not in use. Please try again."}.to_json

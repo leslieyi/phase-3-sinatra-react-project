@@ -1,21 +1,21 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
-  register Sinatra::CrossOrigin
+  # register Sinatra::CrossOrigin
   enable :sessions
 
-  configure do
-    enable :cross_origin
-    set :allow_origin, "*" 
-    set :allow_methods, [:get, :post, :patch, :delete, :options] # allows these HTTP verbs
-    set :expose_headers, ['Content-Type']
-  end
+  # configure do
+  #   enable :cross_origin
+  #   set :allow_origin, "http://localhost:3000"
+  #   set :allow_credentials, true
+  #   set :allow_methods, [:get, :post, :patch, :delete, :options] # allows these HTTP verbs
+  #   set :expose_headers, ['Content-Type']
+  # end
 
-  options "*" do
-    response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
-    response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
-    200
-  end
-  
+  # options "*" do
+  #   response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
+  #   response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+  #   200
+  # end
   
   get "/" do
     { message: "Good luck with your project!" }.to_json
@@ -52,9 +52,10 @@ class ApplicationController < Sinatra::Base
   # end
 
 
-  post "/drinks_orders" do
-   Order.create(customer_id: "#{drinks_orders_params["customer_id"]}", drink_id: "#{drinks_orders_params["drink_id"]}" ) 
-   Order.find_by(customer_id: "#{drinks_orders_params["customer_id"]}").to_json
+  post "/drinks_orders" do 
+    order = Order.find_or_create_by(customer_id: drinks_orders_params["customer_id"])
+    order.drinks.create(drink_id: drinks_orders_params["drink_id"])
+    order.to_json
   end
   
   private 
