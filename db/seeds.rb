@@ -66,6 +66,6 @@ Category.create(name: 'Cold Drinks')
 Customer.create(name: 'Bob', email: 'bob@123.com', password: '123', avatar: 'https://i.pinimg.com/originals/0b/a3/77/0ba377cf0a8d0eb5f4fee0c52ff575ab.jpg')
 Customer.create(name: 'Adam', email: 'lmao@123.com', password: '123', avatar: 'https://media.istockphoto.com/photos/-picture-id486445651?s=612x612')
 
-Order.create(customer_id: 1, drink_ids: [1, 2, 3])
+Order.create(customer_id: 1, drink_ids: [8])
 
 puts '✅ Done seeding!'
