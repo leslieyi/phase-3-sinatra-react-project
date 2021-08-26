@@ -69,7 +69,7 @@ class ApplicationController < Sinatra::Base
 
   delete "/orders/:id" do
     # binding.pry
-    order = Order.find_by(params[:id])
+    order = Order.find(params[:id])
     order.delete
   end
   
